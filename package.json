@@ -5,7 +5,9 @@
   "main": "bundle.js",
   "scripts": {
     "build": "rollup --config",
-    "serve": "npm run build && live-server --port=6969"
+    "serve": "npm run build && live-server --port=6969",
+    "watchtailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "watchrollup": "rollup -cw"
   },
   "keywords": [],
   "author": "",
