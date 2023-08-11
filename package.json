@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "build": "rollup --config",
-    "serve": "live-server --port=6969"
+    "serve": "npm run build && live-server --port=6969"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +19,8 @@
     "rollup": "^2.70.1",
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
   }
 }
