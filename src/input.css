@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-i-hate-db{
+    background-color: #f01414;
+}
+
+.btn-i-hate-db:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(184 20 20 / var(--tw-bg-opacity));
+}

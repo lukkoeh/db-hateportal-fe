@@ -26,7 +26,7 @@ export class HateApiClient {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({})
+                body: JSON.stringify({data:{}})
             });
         } catch (err) {
             this.handleError(err);

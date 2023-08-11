@@ -1,20 +1,48 @@
-import {HateService} from "./services/hate.service";
+import { HateService } from "./services/hate.service";
+
 const hateService = new HateService();
-hateService.getTotalHaters().then(response => {
-    console.log(response);
-})
-window.addEventListener("DOMContentLoaded", ()=>{
-    let btnprivacy : HTMLButtonElement | null = document.querySelector(".btn-privacy");
-    if (btnprivacy) {
-        btnprivacy.addEventListener("click", ()=> {
-            let banner : HTMLDivElement | null = document.querySelector(".privacy-banner");
+
+window.addEventListener("DOMContentLoaded", async () => {
+    initializePrivacyButton();
+    initializeHateButton();
+    updateHateCount(await hateService.getTotalHaters());
+    setInterval(async () => {
+        updateHateCount(await hateService.getTotalHaters());
+    }, 2000);
+});
+
+function initializePrivacyButton(): void {
+    const btnPrivacy: HTMLButtonElement | null = document.querySelector(".btn-privacy");
+
+    if (btnPrivacy) {
+        btnPrivacy.addEventListener("click", () => {
+            const banner: HTMLDivElement | null = document.querySelector(".privacy-banner");
             if (banner) {
                 banner.classList.add("hidden");
-                let btnentry : HTMLButtonElement | null = document.querySelector(".btn-addentry");
-                if (btnentry) {
-                    btnentry.disabled = false;
+                const btnEntry: HTMLButtonElement | null = document.querySelector(".btn-i-hate-db");
+                if (btnEntry) {
+                    btnEntry.disabled = false;
                 }
             }
         });
     }
-});
+}
+
+function initializeHateButton(): void {
+    const btnIHateDB: HTMLButtonElement | null = document.querySelector(".btn-i-hate-db");
+
+    if (btnIHateDB) {
+        btnIHateDB.addEventListener("click", async () => {
+            hateService.increase();
+            const newHateCount = await hateService.getTotalHaters();
+            updateHateCount(newHateCount);
+        });
+    }
+}
+
+function updateHateCount(n: number): void {
+    const hateCount: HTMLSpanElement | null = document.getElementById("hateCount");
+    if (hateCount) {
+        hateCount.innerText = String(n);
+    }
+}
