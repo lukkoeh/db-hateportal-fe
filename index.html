@@ -9,11 +9,16 @@
 </head>
 
 <body>
-<div class="container mx-auto flex justify-center items-center h-screen font-bold flex-col gap-y-5 p-20">
-    <h1 class="text-3xl font-bold text-black text-center">Willkommen im DB-Hateportal</h1>
-    <button class="rounded-2xl bg-blue-500 p-8 text-white">Ich hasse die Bahn</button>
-    <p class="font-normal">0 Menschen hassen die Bahn auch</p>
-    <p class="fixed bottom-2 right-2 font-normal text-black text-center">Diese App ist Satire und steht nicht mit der Deutschen Bahn in Verbindung</p>
+<div class="container mx-auto flex justify-center items-center h-screen font-bold flex-col gap-y-5 p-20 dark:bg-slate-800">
+    <h1 class="text-3xl font-bold text-black text-center dark:text-white">Willkommen auf I LOVE DB!</h1>
+    <button class="rounded-2xl bg-blue-600 p-8 text-white hover:bg-blue-500 transition-all btn-addentry disabled:bg-slate-500" disabled>Die Bahn nervt mich</button>
+    <p class="font-normal text-white">0 sind bereits genervt</p>
+    <p class="fixed bottom-2 right-2 font-normal text-black dark:text-white text-center">Diese App ist Satire und steht nicht mit der Deutschen Bahn in Verbindung | <a class="underline" href="imprint.html">Impressum</a> - <a class="underline" href="privacy.html">Datenschutzerklärung</a></p>
+</div>
+
+<div class="p-8 w-screen h-screen fixed bottom-0 bg-slate-900 text-white flex flex-col justify-center items-center gap-5 privacy-banner transition-all">
+    <p>Diese Website verarbeitet und speichert Daten, um Dienste sicher bereitstellen zu können. Für weitere Informationen lesen Sie bitte die <a class="underline" href="privacy.html">Datenschutzerklärung.</a></p>
+    <button class="rounded-2xl bg-blue-600 p-4 text-white w-full mx-8 md:w-1/4 btn-privacy hover:bg-blue-500">Ich akzeptiere eure Bedingungen</button>
 </div>
 </body>
 </html>
