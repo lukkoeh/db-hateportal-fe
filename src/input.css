@@ -4,6 +4,21 @@
 
 * {
     --db-red: #f01414;
+    /* Firefox */
+    scrollbar-width: thin;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 14px;
 }
 
 .text-db-red {
