@@ -1,7 +1,7 @@
-import { HateService } from "./services/hate.service";
+import { DbLoveService } from "./services/dbLoveService";
 import {CookieBanner, ICookieBannerSelectors} from "./CookieBanner";
 
-const hateService = new HateService();
+const dbLoveService = new DbLoveService();
 
 window.addEventListener("DOMContentLoaded", async () => {
 
@@ -20,27 +20,27 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     initializeHateButton();
 
-    updateHateCount(await hateService.getTotalHaters());
+    updateHateCount(await dbLoveService.getTotalDbLovers());
     setInterval(async () => {
-        updateHateCount(await hateService.getTotalHaters());
+        updateHateCount(await dbLoveService.getTotalDbLovers());
     }, 2000);
 });
 
 function initializeHateButton(): void {
-    const btnIHateDB: HTMLButtonElement | null = document.querySelector(".btn-i-hate-db");
+    const btnIHateDB: HTMLButtonElement | null = document.querySelector(".btn-i-love-db");
 
     if (btnIHateDB) {
         btnIHateDB.addEventListener("click", async () => {
-            hateService.increase();
-            const newHateCount = await hateService.getTotalHaters();
+            dbLoveService.increase();
+            const newHateCount = await dbLoveService.getTotalDbLovers();
             updateHateCount(newHateCount);
         });
     }
 }
 
 function updateHateCount(n: number): void {
-    const hateCount: HTMLSpanElement | null = document.getElementById("hateCount");
-    if (hateCount) {
-        hateCount.innerText = String(n);
+    const dbLoveCount: HTMLSpanElement | null = document.getElementById("dbLoveCount");
+    if (dbLoveCount) {
+        dbLoveCount.innerText = String(n);
     }
 }

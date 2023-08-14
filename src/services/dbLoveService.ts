@@ -1,11 +1,11 @@
-import { HateApiClient } from "../clients/hateApi.client";
+import { DbLoveApiClient } from "../clients/dbLoveApiClient";
 
-export class HateService {
-    private hateApiClient: HateApiClient = new HateApiClient()
+export class DbLoveService {
+    private hateApiClient: DbLoveApiClient = new DbLoveApiClient()
 
-    public async getTotalHaters(): Promise<number> {
+    public async getTotalDbLovers(): Promise<number> {
         try {
-            const response = await this.hateApiClient.getTotalHaters();
+            const response = await this.hateApiClient.getTotalDbLovers();
             return response.meta.pagination.total;
         } catch (err) {
             console.error("Error fetching total haters:", err);

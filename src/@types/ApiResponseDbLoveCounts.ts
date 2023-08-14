@@ -1,4 +1,4 @@
-export type ApiResponseHateCounts = {
+export type ApiResponseDbLoveCounts = {
     data: Array<{
         id: number;
         attributes: {

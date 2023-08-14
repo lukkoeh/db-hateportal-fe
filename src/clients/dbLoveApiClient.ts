@@ -1,7 +1,7 @@
 import config from "../config";
-import { ApiResponseHateCounts } from "../@types";
+import { ApiResponseDbLoveCounts } from "../@types";
 
-export class HateApiClient {
+export class DbLoveApiClient {
     private apiUrl: string = config.apiUrl;
 
     private async makeApiCall(endpoint: string, options: RequestInit): Promise<Response> {
@@ -33,7 +33,7 @@ export class HateApiClient {
         }
     }
 
-    public async getTotalHaters(): Promise<ApiResponseHateCounts> {
+    public async getTotalDbLovers(): Promise<ApiResponseDbLoveCounts> {
         try {
             const response = await this.makeApiCall('hate-counts?pagination[pageSize]=1', {
                 method: 'GET',

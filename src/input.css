@@ -25,11 +25,11 @@
     color: var(--db-red);
 }
 
-.btn-i-hate-db{
+.btn-i-love-db {
     background-color: var(--db-red);
 }
 
-.btn-i-hate-db:hover {
+.btn-i-love-db:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(184 20 20 / var(--tw-bg-opacity));
 }

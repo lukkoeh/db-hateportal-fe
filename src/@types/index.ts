@@ -1,1 +1,1 @@
-export { ApiResponseHateCounts } from "./ApiResponseHateCounts";
+export { ApiResponseDbLoveCounts } from "./ApiResponseDbLoveCounts";
