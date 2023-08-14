@@ -9,17 +9,126 @@
 </head>
 
 <body>
-<div class="w-screen flex justify-center items-center h-screen font-bold flex-col gap-y-5 p-20 dark:bg-slate-800">
-    <h1 class="text-3xl font-bold text-black text-center dark:text-white">Willkommen auf I LOVE DB!</h1>
-    <button class="btn-i-hate-db rounded-2xl p-8 text-white transition-all disabled:bg-slate-500" disabled>Die Bahn nervt mich</button>
-    <p class="font-normal text-white"><span id="hateCount">0</span> sind bereits genervt</p>
-    <p class="fixed bottom-2 right-2 font-normal text-black dark:text-white text-center">Diese App ist Satire und steht nicht mit der Deutschen Bahn in Verbindung | <a class="underline" href="imprint.html">Impressum</a> - <a class="underline" href="privacy.html">Datenschutzerklärung</a></p>
+<main>
+    <div class="w-screen flex justify-center items-center h-screen font-bold flex-col gap-y-5 p-20 dark:bg-zinc-900">
+        <h1 class="text-3xl font-bold text-black text-center dark:text-neutral-200">Willkommen auf I LOVE <span
+                class="text-db-red">DB</span>!</h1>
+        <button class="btn-i-hate-db rounded my-12 p-8 text-white transition-all disabled:bg-slate-500 dark:text-neutral-200"
+        >Die Bahn
+            nervt mich
+        </button>
+        <p class="font-normal text-black dark:text-neutral-200"><span id="hateCount">0</span> sind bereits genervt</p>
+    </div>
+</main>
+<footer>
+    <p class="fixed bottom-2 right-2 font-normal text-black dark:text-neutral-200 text-center">
+        Diese App ist Satire und steht nicht mit der Deutschen Bahn in Verbindung |
+        <a class="underline" href="imprint.html">Impressum</a> -
+        <a class="underline" href="privacy.html">Datenschutzerklärung</a> -
+        <a class="underline cursor-pointer" id="showBannerAgain">Cookies</a>
+    </p>
+</footer>
+
+<div id="cookieBanner"
+     class="hidden absolute top-0 left-0 w-screen h-screen flex flex-col items-center overflow-y-scroll">
+    <div class="flex flex-col grow justify-center md:w-auto md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg m-3 px-10 md:px-24 md:my-9 xl:px-30 xl:my-12 bg-gray-800 dark:bg-indigo-950 shadow-lg rounded py-8 h-fit">
+        <div class="flex flex-col items-center">
+            <div class="md:w-full py-8 md:py-5">
+                <button id="closeCookieBanner" class="md:float-right">
+                    <img src="assets/close.svg" alt="Icon to close the cookie banner">
+                </button>
+            </div>
+
+            <img class="mb-12 w-20 md:w-24 lg:w-28" src="./assets/cookie.svg" alt="Cookie">
+
+
+            <h1 class="text-3xl lg:text-4xl text-neutral-200 font-semibold leading-7 lg:leading-9 text-center mb-6">
+                Privatsphäre-Einstellungen
+            </h1>
+
+            <p class=" text-base text-neutral-200 leading-7 text-center mb-14">
+                Wir verwenden Cookies und ähnliche Technologien auf unserer Website und verarbeiten personenbezogene
+                Daten
+                über dich, wie deine IP-Adresse.
+                Die Datenverarbeitung kann mit deiner Einwilligung oder auf Basis eines berechtigten Interesses
+                erfolgen,
+                dem du in den individuellen Datenschutzeinstellungen widersprechen kannst.
+                Du hast das Recht, nur in essenzielle Services einzuwilligen und deine Einwilligung in der
+                Datenschutzerklärung zu einem späteren Zeitpunkt zu ändern oder zu widerrufen.
+                Für weitere Informationen lesen Sie bitte die <a class="underline"
+                                                                 href="privacy.html">Datenschutzerklärung.</a>
+            </p>
+
+            <button id="acceptCookies"
+                    class="btn-privacy w-full sm:w-auto text-base leading-4 text-center py-6 px-16 bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 mb-6 rounded">
+                Alle akzeptieren
+            </button>
+
+            <a id="declineCookies"
+               class="text-base leading-none text-center text-neutral-200 hover:border-white focus:border-gray-800 border-b border-transparent cursor-pointer mb-6">
+                Alle ablehnen
+            </a>
+
+            <a id="chooseCookies"
+               class="text-base leading-none text-center text-neutral-200 underline cursor-pointer mb-6 mt-5">
+                Privatsphäre-Einstellungen individuell festlegen
+            </a>
+
+            <p class="text-center text-slate-400 mt-10">
+                <a class="underline" href="privacy.html">Datenschutzerklärung</a> &#x2022;
+                <a class="underline" href="imprint.html">Impressum</a>
+            </p>
+        </div>
+    </div>
 </div>
 
-<div class="p-8 w-screen h-screen fixed bottom-0 bg-slate-900 text-white flex flex-col justify-center items-center gap-5 privacy-banner transition-all">
-    <p>Diese Website verarbeitet und speichert Daten, um Dienste sicher bereitstellen zu können. Für weitere Informationen lesen Sie bitte die <a class="underline" href="privacy.html">Datenschutzerklärung.</a></p>
-    <button class="rounded-2xl bg-blue-600 p-4 text-white w-full mx-8 md:w-1/4 btn-privacy hover:bg-blue-500">Ich akzeptiere eure Bedingungen</button>
+<div id="cookieModal"
+     class="hidden absolute top-0 left-0 w-screen h-screen flex flex-col items-center overflow-y-scroll">
+    <div class="flex flex-col grow justify-center md:w-auto md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg m-3 px-10 md:px-24 md:my-9 xl:px-30 xl:my-12 bg-gray-800 dark:bg-indigo-950 shadow-lg rounded py-8 h-fit">
+        <h1 class="text-3xl lg:text-4xl text-neutral-200 font-semibold leading-7 lg:leading-9 text-center mb-6">Wähle
+            deine Präferenzen</h1>
+        <p class="text-neutral-200 mb-4">
+            Wir respektieren Ihre Privatsphäre und verpflichten uns, sie zu schützen. Auf dieser Website werden Cookies
+            verwendet, um die Benutzerfreundlichkeit zu verbessern, den Website-Verkehr zu analysieren und gezielte
+            Werbung anzubieten. Sie haben das Recht zu wählen, welche Cookies Sie aktivieren oder deaktivieren möchten.
+        </p>
+        <p class="text-neutral-200 mb-4">
+            <strong>Technische Cookies:</strong> Diese Cookies sind für die Funktionalität der Website unerlässlich. Sie
+            erfassen keine personenbezogenen Daten und gewährleisten Funktionen wie den Zugriff auf sichere Bereiche der
+            Website, die Verwendung von Einkaufswagen usw.
+        </p>
+        <label class="relative inline-flex items-center cursor-pointer mb-6">
+            <input type="checkbox" value="" class="sr-only peer" checked disabled>
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Technische Cookies</span>
+        </label>
+        <p class="text-neutral-200 mb-4">
+            <strong>Analytische Cookies:</strong> Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer
+            Website interagieren, indem sie Informationen sammeln und melden. Dies hilft uns, die Leistung unserer
+            Website und die Benutzerfreundlichkeit zu verbessern.
+        </p>
+        <label class="relative inline-flex items-center cursor-pointer mb-6">
+            <input id="analyticsCookie" type="checkbox" value="" class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Analytische Cookies</span>
+        </label>
+        <p class="text-neutral-200 mb-6">
+            Bitte beachten Sie, dass das Ablehnen einiger Cookies Ihre Erfahrung auf unserer Website beeinträchtigen
+            kann. Sie können Ihre Einstellungen jederzeit ändern. Ausführlichere Informationen über die von uns
+            verwendeten Cookies und die Zwecke, für die wir sie verwenden, finden Sie in unserer Datenschutzerklärung.
+        </p>
+        <button id="saveCookieChoicesButton"
+                class="w-full sm:w-auto text-base leading-4 text-center py-6 px-16 bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 mb-6 rounded">
+            Speichere deine präferenzen
+        </button>
+        <p class="text-center text-slate-400 mt-10">
+            <a class="underline" href="privacy.html">Datenschutzerklärung</a> &#x2022;
+            <a class="underline" href="imprint.html">Impressum</a>
+        </p>
+    </div>
 </div>
+
+
 </body>
 </html>
 <script defer src="./dist/bundle.js"></script>

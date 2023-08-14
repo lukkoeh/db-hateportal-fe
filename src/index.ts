@@ -1,32 +1,30 @@
 import { HateService } from "./services/hate.service";
+import {CookieBanner, ICookieBannerSelectors} from "./CookieBanner";
 
 const hateService = new HateService();
 
 window.addEventListener("DOMContentLoaded", async () => {
-    initializePrivacyButton();
+
+    const selectors: ICookieBannerSelectors = {
+        cookieBanner: "cookieBanner",
+        btnCloseCookieBanner: "closeCookieBanner",
+        btnShowCookieBanner: "showBannerAgain",
+        btnAcceptCookies: "acceptCookies",
+        btnDeclineCookies: "declineCookies",
+        btnChooseCookies: "chooseCookies",
+        cookieModal: "cookieModal",
+        btnSaveCookieChoices: "saveCookieChoicesButton"
+    }
+
+    const cBanner: CookieBanner = new CookieBanner(selectors);
+
     initializeHateButton();
+
     updateHateCount(await hateService.getTotalHaters());
     setInterval(async () => {
         updateHateCount(await hateService.getTotalHaters());
     }, 2000);
 });
-
-function initializePrivacyButton(): void {
-    const btnPrivacy: HTMLButtonElement | null = document.querySelector(".btn-privacy");
-
-    if (btnPrivacy) {
-        btnPrivacy.addEventListener("click", () => {
-            const banner: HTMLDivElement | null = document.querySelector(".privacy-banner");
-            if (banner) {
-                banner.classList.add("hidden");
-                const btnEntry: HTMLButtonElement | null = document.querySelector(".btn-i-hate-db");
-                if (btnEntry) {
-                    btnEntry.disabled = false;
-                }
-            }
-        });
-    }
-}
 
 function initializeHateButton(): void {
     const btnIHateDB: HTMLButtonElement | null = document.querySelector(".btn-i-hate-db");

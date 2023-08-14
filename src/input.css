@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    --db-red: #f01414;
+}
+
+.text-db-red {
+    color: var(--db-red);
+}
+
 .btn-i-hate-db{
-    background-color: #f01414;
+    background-color: var(--db-red);
 }
 
 .btn-i-hate-db:hover {
